@@ -1,0 +1,182 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+
+    <title> Combinatorial Calculator By Wei 0813401</title>  
+
+    <link rel="stylesheet" href="sytle/main.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+</head>
+
+<body>
+    <button type="button" onclick="computeAll()">Compute All</button>
+    <div>
+        <label><i>n</i> = </label>
+        <input type="number" id="n" value="6" min="0">
+        <label><i>r</i> = </label>
+        <input type="number" id="r" value="2" min="0">
+    </div>
+
+    <p style="margin-left: 30px;">
+        <audio id="audio1" controls="controls" allow="autoplay">
+            <source src="assets/m1.mp3" type="audio/mpeg">
+        </audio>
+    </p>
+    <button type="button" ><a href='bonus.html'>Switch to BonusPage</a></button>
+
+    <table style="width: 1300px;">
+        <tr bgcolor="D3A4FF";>
+            <th>Formula</th>
+            <th>Answer</th>
+            <th>Order relevant</th>
+            <th>Repetition</th>    
+            <th>Memo</th>        
+        </tr>
+
+        <tr>
+            <td>
+                <label><i>P</i>(<i>n</i>, <i>r</i>)</label>
+            </td>
+            <td>
+                <span id="resPermutation"></span>
+            </td>
+            <td> yes </td>
+            <td> no </td>
+            <td class="left"> # Permutations of size <i>r</i> from <i>n</i> distinct objects </td>
+        </tr>
+
+        <tr>
+            <td>
+                <label><i>C</i>(<i>n</i>, <i>r</i>)</label>
+             </td>
+            <td>
+                <span id="resCombination"></span>
+            </td>
+            <td> no </td>
+            <td> no </td>
+            <td class="left"> # Selections/Combinations of size <i>r</i> from <i>n</i> distinct objects </td>
+        </tr>
+
+        <tr>
+            <td>
+                <label><i>n<sup>r</sup></i></label>
+            </td>
+            <td>
+                <span id="resArrangement"></span>
+            </td>
+            <td> yes </td>
+            <td> yes </td>
+            <td class="left"> # Arrangements with repetition of size <i>r</i> from <i>n</i> distinct objects </td>
+        </tr>
+
+        <tr>
+            <td>
+                <label><i>C</i>(<i>r</i>+<i>n</i>-1, <i>r</i>)</label>
+
+            </td>
+            <td>
+                <span id="resSelectrofn"></span>
+            </td>
+            <td> no </td>
+            <td> yes </td>
+            <td class="left"> # Selections with repetition of size <i>r</i> from <i>n</i> distinct objects </td>
+        </tr>
+
+    </table>
+
+
+
+    <button type="button" onclick="computeAllSpeical()">Compute All Speical</button>
+    <div style="margin-right: 500px;">
+        <label><i>n</i> = </label>
+        <input type="number" id="n2" value="5" min="0">
+        <label><i>m</i> = </label>
+        <input type="number" id="m" value="3" min="0">
+        <label><i>k</i> = </label>
+        <input type="number" id="k" value="2" min="0">
+    </div>
+
+    <table style="width: 1300px;">
+        <tr bgcolor="D3A4FF";>
+            <th>Speical Name</th>
+            <th style="width: 800px">Answer</th>
+            <th>Formula</th>     
+        </tr>
+
+        <tr>
+            <td>
+                <label>Catalan</label>
+            </td>
+            <td>
+                <span id="resCatalan"></span>
+            </td>
+            <td class="left"> <i>C<sub>n</sub> = </i><i>C</i>(2<i>n</i>, <i>n</i>) - <i>C</i>(2<i>n</i>, <i>n</i> - 1) </td>
+        </tr>
+
+        <tr>
+            <td>
+                <label>Triangular</label>
+             </td>
+            <td>
+                <span id="resTriangular"></span>
+            </td>
+            <td class="left"> <i>T<sub>n</sub></i> = <i>n</i>(<i>n</i> + 1)&frasl;2 </td>
+        </tr>
+
+        <tr>
+            <td>
+                <label>Harmonic</label>
+            </td>
+            <td>
+                <span id="resHarmonic"></span>
+            </td>
+            <td class="left"> <i>H<sub>n</sub></i> = 1 + &frac12; + &frac13; + ... + 1&frasl;<i><sub>n</sub></i></td>
+        </tr>
+
+        <tr>
+            <td>
+                <label>Fibonacci</label>
+
+            </td>
+            <td>
+                <span id="resFibonacci"></span>
+            </td>
+            <td class="left"> <i>F<sub>n</sub></i> = <i>F<sub>n</sub></i><sub>-1</sub> + <i>F<sub>n</sub></i><sub>-2</sub>, <i>F</i><sub>0</sub> = 0</td>
+        </tr>
+
+        <tr>
+            <td>
+                <label>Lucas</label>
+            </td>
+            <td>
+                <span id="resLucas"></span>
+            </td>
+            <td class="left"> <i>L<sub>n</sub></i> = <i>F<sub>n</sub></i><sub>-1</sub> + <i>F<sub>n</sub></i><sub>+1</sub>, <i>L</i><sub>0</sub> = 2</td>
+        </tr>
+
+        <tr>
+            <td>
+                <label>Eulerian</label>
+            </td>
+            <td>
+                <span id="resEulerian"></span>
+            </td>
+            <td class="left"><i>a<sub>m</sub></i>,<i><sub>k</sub></i> =  (<i>m</i> - <i>k</i>)<i>a<sub>m</sub></i><sub>-1</sub>,<i><sub>k</sub></i><sub>-1</sub> + (<i>k</i> + <i>1</i>)<i>a<sub>m</sub></i><sub>-1</sub>,<i><sub>k</sub></i></td>
+        </tr>
+
+        <tr>
+            <td>
+                <label>Stirling</label>
+            </td>
+            <td>
+                <span id="resStirling"></span>
+            </td>
+            <td class="left"> <i>s</i>(<i>n</i>+1, <i>k</i>) = -<i>ns</i>(<i>n</i>, <i>k</i>) + <i>s</i>(<i>n</i>, <i>k</i>-1) </td>
+        </tr>
+
+    </table>
+
+    <script src='js/index.js'></script>
+</body>
+</html>

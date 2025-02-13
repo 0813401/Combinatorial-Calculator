@@ -1,0 +1,135 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+
+    <title> Combinatorial Calculator By Wei 0813401</title>  
+
+    <link rel="stylesheet" href="sytle/main.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+</head>
+
+<body>
+    <button type="button" onclick="computeAll()">Compute All</button>
+    <div>
+        <label><i>m</i> = </label>
+        <input type="number" id="m" value="5" min="0">
+        <label><i>n</i> = </label>
+        <input type="number" id="n" value="2" min="0">
+    </div>
+
+    <p style="margin-left: 30px;">
+        <audio id="audio2" controls="controls">
+            <source src="assets/m2.mp3" type="audio/mpeg">
+        </audio>
+    </p>
+    <button type="button" ><a href='index.html'>Switch to MainPage</a></button>
+
+    <table> 
+        <tr bgcolor="D3A4FF";>
+            <th>Formula</th>
+            <th> Answer </th>
+            <th> Distinct Objects (m) </th>
+            <th> Distinct Containers (n) </th>   
+            <th> Some Empty Containers </th> 
+            <th> Memo </th>        
+        </tr>
+
+        <tr>
+            <td> <label><i>n<sup>m</sup></i></label> </td>
+            <td>
+                <span id="resArrangement"></span>
+            </td>
+            <td> yes </td>
+            <td> yes </td>
+            <td> yes </td>
+            <td class="left"> Each of the <i>m</i> distinct object may be distibuted into any of <i>n</i> distinct containers </td>
+        </tr>
+
+        <tr>
+            <td> <label><i>n</i><i>!S</i>(<i>m</i>, <i>n</i>) </label> </td>
+            <td>
+                <span id="resOnto"></span>
+            </td>
+            <td> yes </td>
+            <td> yes </td>
+            <td> no </td>
+            <td class="left"> Each of the <i>m</i> distinct object may be distributed onto any of the <i>n</i> distinct containers with no containers empty </td>
+         </tr>
+
+         <tr>
+            <td> <label><i>S</i>(<i>m</i>, 1) + <i>S</i>(<i>m</i>, 2) + ... + <i>S</i>(<i>m</i>, <i>n</i>)</label> </td>
+            <td>
+                <span id="resSm_1ton"></span>
+            </td>
+            <td> yes </td>
+            <td> no </td>
+            <td> yes </td>
+            <td class="left"> <i>m</i> distinct objects onto 1, 2, ..., <i>n</i> identical containers, leaving no container empty <i>S</i>(<i>m</i>, 1) + <i>S</i>(<i>m</i>, 2) + ... + <i>S</i>(<i>m</i>, <i>n</i>) </td>
+         </tr>
+
+         <tr>
+            <td> <label><i>S</i>(<i>m</i>, <i>n</i>)</label> </td>
+            <td>
+                <span id="resSm_n"></span>
+            </td>
+            <td> yes </td>
+            <td> no </td>
+            <td> no </td>
+            <td class="left"> <i>m</i> distinct objects onto <i>n</i> identical containers, leaving no containers empty </td>
+         </tr>
+
+         <tr>
+            <td> <label><i>C</i>(<i>m</i>+<i>n</i>-1 , <i>m</i>)</label> </td>
+            <td>
+                <span id="resSelectrofn"></span>
+            </td>
+            <td> no </td>
+            <td> yes </td>
+            <td> yes </td>
+            <td class="left"> Ordering food from the view of kitchen (<i>m</i> kids (identical), <i>n</i> foods (distinct); <i>m</i> identical pennies into <i>n</i> distinct container; nonnegative interger solutions for an equation </td>
+         </tr>
+
+         <tr>
+            <td> <label><i>C</i>(<i>m</i>-1, <i>m</i>-<i>n</i>)</label> </td>
+            <td>
+                <span id="resSelectOther"></span>
+            </td>
+            <td> no </td>
+            <td> yes </td>
+            <td> no </td>
+            <td class="left"> Deliver one object to each of the <i>n</i> distinct container first, then distribute <i>m</i>-<i>n</i> objects to the <i>n</i> containers </td>
+         </tr>
+
+         <tr>
+            <td>
+                <label>(1) <i>p</i>(<i>m</i>), for <i>n</i> = <i>m</i></label>
+                <br>
+                <label>(2) <i>p</i>(<i>m</i>, 1) + <i>p</i>(<i>m</i>, 2) + ... + <i>p</i>(<i>m</i>, <i>n</i>), for <i>n</i> < <i>m</i></label>
+            </td>
+            <td>
+                <span id="resPartitionMulti"></span>
+            </td>
+            <td> no </td>
+            <td> no </td>
+            <td> yes </td>
+            <td class="left"> Partition integer <i>m</i> into at most <i>n</i> summands (with some 0 summands, corresponding to empty containers) </td>
+        </tr>
+
+        <tr>
+            <td>
+                <label><i>P</i>(<i>m</i>, <i>n</i>)</label>
+            </td>
+            <td>
+                <span id="resPartition"></span>
+            </td>
+            <td> no </td>
+            <td> no </td>
+            <td> no </td>
+            <td class="left"> Partition interger <i>m</i> into exactly <i>n</i> summands (with no container empty) </td>
+        </tr>
+    </table>
+
+    <script src='js/bonus.js'></script>
+</body>
+</html>
